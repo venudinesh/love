@@ -373,7 +373,7 @@ body.new-year-theme .floating-quote {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
 }
 
 .landing-emoji {
@@ -397,13 +397,13 @@ body.new-year-theme .floating-quote {
     color: #555;
     line-height: 1.8;
     margin: 0;
-    min-height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 10px;
+    min-height: auto;
+    padding: 15px 10px;
     font-style: italic;
     letter-spacing: 0.5px;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 .landing-paragraph::after {
@@ -2290,7 +2290,8 @@ body.new-year-theme .floating-quote {
 
     .landing-paragraph {
         font-size: 14px !important;
-        min-height: 120px;
+        min-height: auto;
+        padding: 12px 10px !important;
     }
 
     .btn-continue {
@@ -2586,7 +2587,8 @@ body.new-year-theme .floating-quote {
 
     .landing-paragraph {
         font-size: 13px !important;
-        min-height: 100px;
+        min-height: auto;
+        padding: 10px 8px !important;
     }
 
     .btn-continue {
