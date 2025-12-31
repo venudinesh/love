@@ -16,6 +16,67 @@ body {
     cursor: none;
 }
 
+/* New Year Theme - Dec 31 to Jan 1 */
+body.new-year-theme {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+body.new-year-theme .question-card {
+    background: #0f3460;
+    color: #eee;
+    border: 2px solid #e94560;
+}
+
+body.new-year-theme .question {
+    color: #ffeb3b;
+    text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+}
+
+/* Audio Feedback Styles */
+.sound-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 20, 147, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.sound-indicator:hover {
+    background: rgba(255, 20, 147, 1);
+    transform: scale(1.1);
+}
+
+.sound-indicator.muted {
+    opacity: 0.5;
+}
+
+/* Page Transitions */
+.screen {
+    animation: fadeInPage 0.6s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Background GIFs */
 .background-gifs {
     position: fixed;
@@ -32,6 +93,7 @@ body {
     opacity: 0.75;
     width: 140px;
     height: 140px;
+    transition: transform 0.1s ease-out;
 }
 
 .tenor-gif-embed {
@@ -235,6 +297,20 @@ body {
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
     text-align: center;
     position: relative;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    animation: glowingBorder 3s ease-in-out infinite;
+}
+
+@keyframes glowingBorder {
+    0%, 100% {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 0 20px rgba(255, 20, 147, 0.5);
+        border-color: rgba(255, 20, 147, 0.5);
+    }
+    50% {
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 0 40px rgba(255, 105, 180, 0.8);
+        border-color: rgba(255, 105, 180, 0.8);
+    }
 }
 
 .emoji-container {
@@ -307,6 +383,27 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.btn:active::before {
+    width: 300px;
+    height: 300px;
 }
 
 .btn-yes {
@@ -404,6 +501,18 @@ body {
 
 .success-screen.show {
     display: block;
+    animation: pageLoadScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pageLoadScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotateZ(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+    }
 }
 
 .success-message {
@@ -1025,6 +1134,7 @@ body {
 @media (max-width: 600px) {
     .question-card {
         padding: 30px 20px;
+        max-width: 90%;
     }
 
     .emoji-container {
@@ -1034,11 +1144,63 @@ body {
 
     .question {
         font-size: 24px;
+        margin-bottom: 30px;
     }
 
     .btn {
         padding: 10px 25px;
         font-size: 14px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .top-left-back-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .floating-quote {
+        font-size: 14px;
+    }
+
+    .bg-gif {
+        opacity: 0.5;
+        width: 100px;
+        height: 100px;
+    }
+
+    .sound-indicator {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .question-card {
+        padding: 20px 15px;
+    }
+
+    .question {
+        font-size: 20px;
+    }
+
+    .emoji-container {
+        font-size: 50px;
+        gap: 8px;
+    }
+
+    .btn {
+        padding: 8px 20px;
+        font-size: 13px;
     }
 }
 
@@ -1064,6 +1226,24 @@ body {
 @keyframes confettiFall {
     to {
         transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Confetti Variation - Gold */
+.confetti.gold {
+    background: radial-gradient(circle, #ffd700, #ffed4e);
+}
+
+/* Confetti Variation - Rainbow */
+.confetti.rainbow {
+    background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500, #1ec5a5);
+    animation: confettiFallSpin 3s ease-in forwards;
+}
+
+@keyframes confettiFallSpin {
+    to {
+        transform: translateY(100vh) rotate(1080deg);
         opacity: 0;
     }
 }
@@ -1181,6 +1361,35 @@ body {
         text-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 20, 147, 0.6);
         color: #ff1493;
     }
+}
+
+/* Floating Romantic Text */
+@keyframes floatingText {
+    0% {
+        opacity: 0;
+        transform: translateY(100vh) translateX(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100vh) translateX(100px);
+    }
+}
+
+.floating-quote {
+    position: fixed;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff1493;
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 1;
+    animation: floatingText linear forwards;
 }
 
 /* GIFT PROGRESS BADGES */

@@ -1,3 +1,124 @@
+// ============ ENHANCEMENTS ============
+
+// 1. NEW YEAR THEME CHECK
+function checkNewYearTheme() {
+    const today = new Date();
+    const month = today.getMonth() + 1;
+    const day = today.getDate();
+    
+    if ((month === 12 && day === 31) || (month === 1 && day === 1)) {
+        document.body.classList.add('new-year-theme');
+    }
+}
+checkNewYearTheme();
+
+// 2. PARALLAX SCROLLING
+document.addEventListener('mousemove', (e) => {
+    const bgGifs = document.querySelectorAll('.bg-gif');
+    const xPercent = e.clientX / window.innerWidth;
+    const yPercent = e.clientY / window.innerHeight;
+    
+    bgGifs.forEach((gif, index) => {
+        const speed = (index % 3 + 1) * 2;
+        const moveX = (xPercent - 0.5) * speed;
+        const moveY = (yPercent - 0.5) * speed;
+        gif.style.transform = `translate(${moveX}px, ${moveY}px)`;
+    });
+});
+
+// 3. FLOATING ROMANTIC QUOTES
+const quotes = [
+    "You make my heart smile 💕",
+    "Forever with you 💑",
+    "My love, my life, my everything 💗",
+    "You are my greatest blessing 🌟",
+    "With you, I found home ❤️",
+    "Every moment with you is precious ✨",
+    "You're the one I want forever 💝"
+];
+
+function createFloatingQuote() {
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    const floatingText = document.createElement('div');
+    floatingText.className = 'floating-quote';
+    floatingText.textContent = quote;
+    
+    const startX = Math.random() * window.innerWidth;
+    floatingText.style.left = startX + 'px';
+    floatingText.style.bottom = '-50px';
+    floatingText.style.animationDuration = (3 + Math.random() * 3) + 's';
+    
+    document.body.appendChild(floatingText);
+    
+    setTimeout(() => floatingText.remove(), 6500);
+}
+
+// Create floating quotes every 8 seconds
+setInterval(createFloatingQuote, 8000);
+
+// 4. SOUND EFFECT TOGGLE
+let soundEnabled = true;
+
+function createSoundIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'sound-indicator';
+    indicator.innerHTML = '🔊';
+    indicator.addEventListener('click', toggleSound);
+    document.body.appendChild(indicator);
+}
+createSoundIndicator();
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    const indicator = document.querySelector('.sound-indicator');
+    if (soundEnabled) {
+        indicator.classList.remove('muted');
+        indicator.innerHTML = '🔊';
+    } else {
+        indicator.classList.add('muted');
+        indicator.innerHTML = '🔇';
+    }
+}
+
+// 5. SOUND EFFECTS
+function playSound(type) {
+    if (!soundEnabled) return;
+    
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    switch(type) {
+        case 'click':
+            playTone(audioContext, 800, 0.1);
+            break;
+        case 'success':
+            playTone(audioContext, 1000, 0.15);
+            setTimeout(() => playTone(audioContext, 1200, 0.15), 100);
+            break;
+        case 'confetti':
+            playTone(audioContext, 600, 0.1);
+            break;
+    }
+}
+
+function playTone(audioContext, frequency, duration) {
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = frequency;
+    oscillator.type = 'sine';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + duration);
+}
+
+// ============ ORIGINAL CODE ============
+
 const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 
@@ -39,6 +160,8 @@ noBtn.addEventListener('touchstart', (e) => {
 
 // Yes button action
 yesBtn.addEventListener('click', () => {
+    playSound('success');
+    
     const heartAnimation = document.getElementById('heartAnimation');
     const questionCard = document.getElementById('questionCard');
     const successScreen = document.getElementById('successScreen');
@@ -46,8 +169,8 @@ yesBtn.addEventListener('click', () => {
     // Show heart animation
     heartAnimation.classList.add('show');
     
-    // Trigger confetti
-    createConfetti();
+    // Trigger confetti with variation (rainbow for this one)
+    createConfetti('rainbow');
     
     // Trigger floating particles
     createParticles(event);
@@ -72,10 +195,13 @@ giftBtn.addEventListener('click', () => {
     
     successScreen.classList.remove('show');
     giftScreen.classList.add('show');
+    playSound('click');
 });
 
 // Gift Yes button - accept the gift
 giftYesBtn.addEventListener('click', () => {
+    playSound('success');
+    
     const giftScreen = document.getElementById('giftScreen');
     const giftSelectionScreen = document.getElementById('giftSelectionScreen');
     
@@ -229,16 +355,26 @@ backToGifts2.addEventListener('click', () => {
 // ===== NEW FEATURES =====
 
 // CONFETTI ANIMATION
-function createConfetti() {
+function createConfetti(variation = 'default') {
     const container = document.getElementById('confettiContainer');
     const confettiCount = 50;
     
+    playSound('confetti');
+    
     for (let i = 0; i < confettiCount; i++) {
         const confetti = document.createElement('div');
-        confetti.classList.add('confetti');
+        
+        if (variation === 'rainbow') {
+            confetti.classList.add('confetti', 'rainbow');
+        } else if (variation === 'gold') {
+            confetti.classList.add('confetti', 'gold');
+        } else {
+            confetti.classList.add('confetti');
+            confetti.style.background = ['#ff1493', '#ff69b4', '#ffb6d9', '#ff69b4'][Math.floor(Math.random() * 4)];
+        }
+        
         confetti.style.left = Math.random() * 100 + '%';
         confetti.style.delay = Math.random() * 0.5 + 's';
-        confetti.style.background = ['#ff1493', '#ff69b4', '#ffb6d9', '#ff69b4'][Math.floor(Math.random() * 4)];
         container.appendChild(confetti);
         
         setTimeout(() => confetti.remove(), 3000);
