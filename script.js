@@ -1,3 +1,25 @@
+// ============ MOBILE OPTIMIZATION ============
+
+// Detect if device is mobile
+const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+           window.innerWidth < 768;
+};
+
+const IS_MOBILE = isMobileDevice();
+
+// Reduce animations on mobile devices for better performance
+if (IS_MOBILE) {
+    // Reduce confetti particles
+    const originalCreateConfetti = window.createConfetti;
+    window.createConfetti = function(type = 'rainbow') {
+        if (originalCreateConfetti) {
+            // Limit particles on mobile
+            originalCreateConfetti(type, 30); // Fewer particles
+        }
+    };
+}
+
 // ============ ENHANCEMENTS ============
 
 // 1. NEW YEAR THEME CHECK & SPECIAL CONFETTI
@@ -12,10 +34,11 @@ function checkNewYearTheme() {
         document.body.classList.add('new-year-theme');
         isNewYearMode = true;
         
-        // Special New Year celebration every 30 seconds
+        // Special New Year celebration every 30 seconds (less frequent on mobile)
+        const celebrationInterval = IS_MOBILE ? 60000 : 30000;
         setInterval(() => {
             createNewYearCelebration();
-        }, 30000);
+        }, celebrationInterval);
     }
 }
 checkNewYearTheme();
@@ -25,7 +48,9 @@ function createNewYearCelebration() {
     if (isNewYearMode) {
         createConfetti('gold');
         setTimeout(() => createConfetti('rainbow'), 300);
-        createHeartSparkles();
+        if (!IS_MOBILE) {
+            createHeartSparkles();
+        }
     }
 }
 
