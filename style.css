@@ -485,6 +485,31 @@ body {
     max-width: 400px;
 }
 
+.back-to-gifts-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-gifts-btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+.back-to-gifts-btn:active {
+    transform: scale(0.95);
+}
+
 .message-text {
     font-size: 16px;
     line-height: 1.6;

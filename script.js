@@ -161,3 +161,23 @@ goBackBtn.addEventListener('click', () => {
     rejectedScreen.classList.remove('show');
     giftScreen.classList.add('show');
 });
+
+// Back to gifts buttons - return to gift selection screen
+const backToGifts1 = document.getElementById('backToGifts1');
+const backToGifts2 = document.getElementById('backToGifts2');
+
+backToGifts1.addEventListener('click', () => {
+    const messageScreen = document.getElementById('messageScreen');
+    const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+    
+    messageScreen.classList.remove('show');
+    giftSelectionScreen.classList.add('show');
+});
+
+backToGifts2.addEventListener('click', () => {
+    const messageScreen2 = document.getElementById('messageScreen2');
+    const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+    
+    messageScreen2.classList.remove('show');
+    giftSelectionScreen.classList.add('show');
+});
