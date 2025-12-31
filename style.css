@@ -206,6 +206,98 @@ body {
     animation: fadeIn 0.5s ease-in;
 }
 
+.btn-gift {
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff85ad 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-gift:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+}
+
+.btn-gift:active {
+    transform: scale(0.95);
+}
+
+/* Gift Screen */
+.gift-screen {
+    display: none;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.gift-screen.show {
+    display: block;
+}
+
+.gift-title {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.gift-buttons {
+    margin-top: 30px;
+}
+
+.btn-gift-yes,
+.btn-gift-no {
+    padding: 12px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-gift-yes {
+    background: linear-gradient(135deg, #d32f2f 0%, #f44336 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+}
+
+.btn-gift-yes:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+}
+
+.btn-gift-yes:active {
+    transform: scale(0.95);
+}
+
+.btn-gift-no {
+    background: linear-gradient(135deg, #d32f2f 0%, #f44336 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.3);
+}
+
+.btn-gift-no.moving {
+    position: absolute;
+}
+
+.btn-gift-no:hover {
+    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.5);
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;

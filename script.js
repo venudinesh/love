@@ -53,3 +53,61 @@ yesBtn.addEventListener('click', () => {
         successScreen.classList.add('show');
     }, 3000);
 });
+
+// Gift button action
+const giftBtn = document.getElementById('giftBtn');
+const giftNoBtn = document.getElementById('giftNoBtn');
+const giftYesBtn = document.getElementById('giftYesBtn');
+
+giftBtn.addEventListener('click', () => {
+    const successScreen = document.getElementById('successScreen');
+    const giftScreen = document.getElementById('giftScreen');
+    
+    successScreen.classList.remove('show');
+    giftScreen.classList.add('show');
+});
+
+// Gift screen - No button moves away
+giftNoBtn.addEventListener('mouseover', () => {
+    giftNoBtn.classList.add('moving');
+    const card = document.querySelector('.gift-screen');
+    const cardRect = card.getBoundingClientRect();
+    const btnRect = giftNoBtn.getBoundingClientRect();
+    
+    const btnWidth = btnRect.width;
+    const btnHeight = btnRect.height;
+    
+    const maxX = cardRect.width - btnWidth - 40;
+    const maxY = cardRect.height - btnHeight - 40;
+    
+    const x = Math.max(20, Math.random() * maxX);
+    const y = Math.max(20, Math.random() * maxY);
+    
+    giftNoBtn.style.left = x + 'px';
+    giftNoBtn.style.top = y + 'px';
+});
+
+giftNoBtn.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    giftNoBtn.classList.add('moving');
+    const card = document.querySelector('.gift-screen');
+    const cardRect = card.getBoundingClientRect();
+    const btnRect = giftNoBtn.getBoundingClientRect();
+    
+    const btnWidth = btnRect.width;
+    const btnHeight = btnRect.height;
+    
+    const maxX = cardRect.width - btnWidth - 40;
+    const maxY = cardRect.height - btnHeight - 40;
+    
+    const x = Math.max(20, Math.random() * maxX);
+    const y = Math.max(20, Math.random() * maxY);
+    
+    giftNoBtn.style.left = x + 'px';
+    giftNoBtn.style.top = y + 'px';
+});
+
+// Gift Yes button - accept the gift
+giftYesBtn.addEventListener('click', () => {
+    alert('🎁 Yay! Gift accepted! 💕');
+});
