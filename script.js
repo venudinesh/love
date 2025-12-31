@@ -95,11 +95,26 @@ giftBoxes.forEach(box => {
             const giftVideo = document.getElementById('giftVideo');
             videoOverlay.classList.add('show');
             giftVideo.play();
+        } else if (giftNumber === '3') {
+            // Show tic-tac-toe game for third gift
+            const ticTacToeScreen = document.getElementById('ticTacToeScreen');
+            giftSelectionScreen.classList.remove('show');
+            ticTacToeScreen.classList.add('show');
         } else {
             // For other gifts, show alert
             alert('🎁 Yay! You opened the gift! 💕');
         }
     });
+});
+
+// Back button from tic-tac-toe
+const backBtn = document.getElementById('backBtn');
+backBtn.addEventListener('click', () => {
+    const ticTacToeScreen = document.getElementById('ticTacToeScreen');
+    const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+    
+    ticTacToeScreen.classList.remove('show');
+    giftSelectionScreen.classList.add('show');
 });
 
 // Close video overlay

@@ -536,6 +536,120 @@ body {
     text-align: left;
 }
 
+/* Tic Tac Toe Game (Gift 3) */
+.tictactoe-screen {
+    display: none;
+    background: #e8e8e8;
+    border-radius: 20px;
+    padding: 60px 40px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.tictactoe-screen.show {
+    display: block;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.tictactoe-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.tictactoe-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 0;
+    position: relative;
+    padding: 10px;
+}
+
+/* Sketchy grid lines */
+.tictactoe-grid::before,
+.tictactoe-grid::after {
+    content: '';
+    position: absolute;
+    background: #d64545;
+}
+
+/* Vertical lines */
+.tictactoe-grid::before {
+    left: 33%;
+    top: 5%;
+    width: 3px;
+    height: 90%;
+    transform: rotate(-1deg);
+    box-shadow: 104px 0 0 #d64545;
+}
+
+/* Horizontal lines */
+.tictactoe-grid::after {
+    top: 33%;
+    left: 5%;
+    height: 3px;
+    width: 90%;
+    transform: rotate(0.5deg);
+    box-shadow: 0 104px 0 #d64545;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.heart {
+    font-size: 60px;
+    color: #d64545;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.x-mark {
+    font-size: 70px;
+    color: #d64545;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+.tictactoe-message {
+    font-size: 24px;
+    color: #333;
+    font-weight: normal;
+    margin-top: 20px;
+}
+
+.back-btn {
+    padding: 12px 30px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.back-btn:hover {
+    background: #555;
+    transform: scale(1.05);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}
+
 /* Video Overlay (Gift 2) */
 .video-overlay {
     display: none;
