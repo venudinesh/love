@@ -70,7 +70,19 @@ giftBtn.addEventListener('click', () => {
 
 // Gift Yes button - accept the gift
 giftYesBtn.addEventListener('click', () => {
-    alert('🎁 Yay! Gift accepted! 💕');
+    const giftScreen = document.getElementById('giftScreen');
+    const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+    
+    giftScreen.classList.remove('show');
+    giftSelectionScreen.classList.add('show');
+});
+
+// Gift box click handlers
+const giftBoxes = document.querySelectorAll('.gift-box');
+giftBoxes.forEach(box => {
+    box.addEventListener('click', () => {
+        alert('🎁 Yay! You opened the gift! 💕');
+    });
 });
 
 // Gift No button - show rejected screen
