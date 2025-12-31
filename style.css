@@ -41,6 +41,7 @@ body.new-year-theme .question-card {
     border: 2px solid;
     border-image: linear-gradient(135deg, #ff1493 0%, #ffd700 100%) 1;
     box-shadow: 0 0 30px rgba(255, 20, 147, 0.3), 0 0 60px rgba(255, 215, 0, 0.2);
+    will-change: transform;
 }
 
 body.new-year-theme .question {
@@ -48,6 +49,8 @@ body.new-year-theme .question {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    will-change: transform;
+}
     text-shadow: none;
     font-weight: 900;
 }
@@ -1272,6 +1275,8 @@ body.new-year-theme .floating-quote {
     height: 10px;
     background: radial-gradient(circle, #ff69b4, #ff1493);
     animation: confettiFall 3s ease-in forwards;
+    will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 @keyframes confettiFall {
@@ -1315,6 +1320,8 @@ body.new-year-theme .floating-quote {
     font-size: 30px;
     opacity: 0.8;
     animation: particleFloat 3s ease-out forwards;
+    will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 @keyframes particleFloat {
@@ -1335,6 +1342,8 @@ body.new-year-theme .floating-quote {
     pointer-events: none;
     animation: emojiRain 4s linear forwards;
     z-index: 14;
+    will-change: transform, opacity;
+    transform: translateZ(0);
 }
 
 @keyframes emojiRain {

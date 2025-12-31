@@ -47,9 +47,16 @@ function createHeartSparkles() {
     }
 }
 
-// 2. PARALLAX SCROLLING
+// 2. PARALLAX SCROLLING (Throttled for performance)
+let lastParallaxTime = 0;
+const parallaxThrottle = 16;
+const bgGifs = document.querySelectorAll('.bg-gif');
+
 document.addEventListener('mousemove', (e) => {
-    const bgGifs = document.querySelectorAll('.bg-gif');
+    const now = Date.now();
+    if (now - lastParallaxTime < parallaxThrottle) return;
+    lastParallaxTime = now;
+    
     const xPercent = e.clientX / window.innerWidth;
     const yPercent = e.clientY / window.innerHeight;
     
@@ -99,8 +106,11 @@ function createFloatingQuote() {
     setTimeout(() => floatingText.remove(), 6500);
 }
 
-// Create floating quotes every 8 seconds
-setInterval(createFloatingQuote, 8000);
+// Create floating quotes every 8 seconds (respects accessibility settings)
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion) {
+    setInterval(createFloatingQuote, 8000);
+}
 
 // 4. SOUND EFFECT TOGGLE
 let soundEnabled = true;
@@ -403,7 +413,7 @@ backToGifts2.addEventListener('click', () => {
 // CONFETTI ANIMATION
 function createConfetti(variation = 'default') {
     const container = document.getElementById('confettiContainer');
-    const confettiCount = 50;
+    const confettiCount = window.innerWidth < 768 ? 25 : 50;
     
     playSound('confetti');
     
@@ -433,8 +443,9 @@ function createParticles(event) {
     const x = event.clientX;
     const y = event.clientY;
     const particleEmojis = ['❤️', '💕', '💖', '✨', '⭐'];
+    const particleCount = window.innerWidth < 768 ? 5 : 10;
     
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('particle');
         particle.textContent = particleEmojis[Math.floor(Math.random() * particleEmojis.length)];
@@ -450,8 +461,9 @@ function createParticles(event) {
 // EMOJI RAIN
 function createEmojiRain() {
     const emojis = ['❤️', '💕', '💖', '✨', '⭐', '🎉'];
+    const rainCount = window.innerWidth < 768 ? 10 : 20;
     
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < rainCount; i++) {
         const emoji = document.createElement('div');
         emoji.classList.add('emoji');
         emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
