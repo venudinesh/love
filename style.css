@@ -1432,3 +1432,31 @@ body {
     background: rgba(0, 0, 0, 0.8);
     transform: scale(1.1);
 }
+
+/* TOP LEFT BACK BUTTON */
+.top-left-back-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(255, 20, 147, 0.8);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.3);
+}
+
+.top-left-back-btn:hover {
+    background: rgba(255, 20, 147, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.5);
+}

@@ -473,3 +473,41 @@ document.addEventListener('mouseleave', () => {
 document.addEventListener('mouseenter', () => {
     cursorHeart.style.display = 'flex';
 });
+
+// ===== TOP LEFT BACK BUTTONS =====
+
+// Back from success screen to question card
+const backFromSuccess = document.getElementById('backFromSuccess');
+if (backFromSuccess) {
+    backFromSuccess.addEventListener('click', () => {
+        const successScreen = document.getElementById('successScreen');
+        const questionCard = document.getElementById('questionCard');
+        
+        successScreen.classList.remove('show');
+        questionCard.style.display = 'block';
+    });
+}
+
+// Back from gift screen to success screen
+const backFromGift = document.getElementById('backFromGift');
+if (backFromGift) {
+    backFromGift.addEventListener('click', () => {
+        const giftScreen = document.getElementById('giftScreen');
+        const successScreen = document.getElementById('successScreen');
+        
+        giftScreen.classList.remove('show');
+        successScreen.classList.add('show');
+    });
+}
+
+// Back from gift selection screen to gift screen
+const backFromGiftSelection = document.getElementById('backFromGiftSelection');
+if (backFromGiftSelection) {
+    backFromGiftSelection.addEventListener('click', () => {
+        const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+        const giftScreen = document.getElementById('giftScreen');
+        
+        giftSelectionScreen.classList.remove('show');
+        giftScreen.classList.add('show');
+    });
+}
