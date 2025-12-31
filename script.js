@@ -39,5 +39,17 @@ noBtn.addEventListener('touchstart', (e) => {
 
 // Yes button action
 yesBtn.addEventListener('click', () => {
-    alert('❤️ I love you too! ❤️');
+    const heartAnimation = document.getElementById('heartAnimation');
+    const questionCard = document.getElementById('questionCard');
+    const successScreen = document.getElementById('successScreen');
+    
+    // Show heart animation
+    heartAnimation.classList.add('show');
+    
+    // After 3 seconds, hide heart and show success screen
+    setTimeout(() => {
+        heartAnimation.classList.remove('show');
+        questionCard.style.display = 'none';
+        successScreen.classList.add('show');
+    }, 3000);
 });
