@@ -315,6 +315,25 @@ openGiftBtns.forEach(btn => {
         // Track this gift as opened
         openedGifts.add(giftNumber);
         
+        // Update gift count
+        const giftCountElement = document.getElementById('giftCount');
+        giftCountElement.textContent = openedGifts.size;
+        
+        // Show "Gift unlocked!" message
+        playSound('success');
+        const unlockedMsg = document.createElement('div');
+        unlockedMsg.className = 'gift-unlocked-message';
+        unlockedMsg.textContent = '🎁 Gift Unlocked!';
+        document.body.appendChild(unlockedMsg);
+        
+        setTimeout(() => {
+            unlockedMsg.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            unlockedMsg.remove();
+        }, 2000);
+        
         // Trigger emoji rain
         createEmojiRain();
         

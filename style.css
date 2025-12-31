@@ -2096,3 +2096,40 @@ body.new-year-theme .floating-quote {
     transform: scale(0.95);
     box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
 }
+/* Gift Unlocked Message */
+.gift-unlocked-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 30px 50px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(255, 20, 147, 0.5);
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.gift-unlocked-message.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation: messageFloat 2s ease-out forwards;
+}
+
+@keyframes messageFloat {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -70%) scale(1);
+    }
+}
