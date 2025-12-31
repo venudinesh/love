@@ -516,6 +516,31 @@ videoPlayerModal.addEventListener('click', (e) => {
     }
 });
 
+// Finish video button handler
+const finishVideoBtn = document.getElementById('finishVideoBtn');
+if (finishVideoBtn) {
+    finishVideoBtn.addEventListener('click', () => {
+        const videoPlayerModal = document.getElementById('videoPlayerModal');
+        const specialVideo = document.getElementById('specialVideo');
+        
+        videoPlayerModal.classList.add('hidden');
+        specialVideo.pause();
+        specialVideo.currentTime = 0;
+        
+        // Show final love message
+        setTimeout(() => {
+            const specialVideoScreen = document.getElementById('specialVideoScreen');
+            const finalMessageScreen = document.getElementById('finalMessageScreen');
+            
+            specialVideoScreen.classList.remove('show');
+            finalMessageScreen.classList.add('show');
+            
+            createConfetti('rainbow');
+            createHeartSparkles();
+        }, 500);
+    });
+}
+
 // Final love message handlers
 const closeWebsiteBtn = document.getElementById('closeWebsiteBtn');
 if (closeWebsiteBtn) {

@@ -1262,6 +1262,33 @@ body.new-year-theme .floating-quote {
     transform: scale(1.1);
 }
 
+.finish-video-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 20, 147, 0.4);
+    z-index: 5;
+}
+
+.finish-video-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.6);
+}
+
+.finish-video-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 3px 15px rgba(255, 20, 147, 0.4);
+}
+
 /* FINAL LOVE MESSAGE SCREEN */
 .final-message-screen {
     display: none;
