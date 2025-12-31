@@ -481,6 +481,11 @@ body.new-year-theme .floating-quote {
     border: 2px solid transparent;
     background-clip: padding-box;
     animation: glowingBorder 3s ease-in-out infinite;
+    display: none;
+}
+
+.question-card.show {
+    display: block;
 }
 
 @keyframes glowingBorder {
