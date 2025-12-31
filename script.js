@@ -1,17 +1,21 @@
 const noBtn = document.getElementById('noBtn');
 const yesBtn = document.getElementById('yesBtn');
 
-// Function to get random position within viewport boundaries
+// Function to get random position within the card boundaries
 function getRandomPosition() {
+    const card = document.querySelector('.question-card');
+    const cardRect = card.getBoundingClientRect();
     const btnRect = noBtn.getBoundingClientRect();
+    
     const btnWidth = btnRect.width;
     const btnHeight = btnRect.height;
     
-    const maxX = window.innerWidth - btnWidth;
-    const maxY = window.innerHeight - btnHeight;
+    // Calculate boundaries relative to the card
+    const maxX = cardRect.width - btnWidth - 40; // 40px for padding
+    const maxY = cardRect.height - btnHeight - 40;
     
-    const x = Math.max(0, Math.random() * maxX);
-    const y = Math.max(0, Math.random() * maxY);
+    const x = Math.max(20, Math.random() * maxX);
+    const y = Math.max(20, Math.random() * maxY);
     
     return { x, y };
 }
