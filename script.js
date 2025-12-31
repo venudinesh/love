@@ -269,12 +269,18 @@ giftYesBtn.addEventListener('click', () => {
     createEmojiRain();
 });
 
+// Track opened gifts
+let openedGifts = new Set();
+
 // Open gift button handlers
 const openGiftBtns = document.querySelectorAll('.open-gift-btn');
 openGiftBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const giftNumber = btn.getAttribute('data-gift');
         const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+        
+        // Track this gift as opened
+        openedGifts.add(giftNumber);
         
         // Trigger emoji rain
         createEmojiRain();
@@ -317,7 +323,13 @@ backBtn.addEventListener('click', () => {
     middleCell.classList.add('clickable');
     
     ticTacToeScreen.classList.remove('show');
-    giftSelectionScreen.classList.add('show');
+    
+    if (checkAllGiftsOpened()) {
+        const specialVideoScreen = document.getElementById('specialVideoScreen');
+        specialVideoScreen.classList.add('show');
+    } else {
+        giftSelectionScreen.classList.add('show');
+    }
 });
 
 // Middle cell click - reveal heart and win message
@@ -388,6 +400,14 @@ goBackBtn.addEventListener('click', () => {
     giftScreen.classList.add('show');
 });
 
+// Helper function to check if all gifts are opened and show special video screen
+function checkAllGiftsOpened() {
+    if (openedGifts.size === 3) {
+        return true;
+    }
+    return false;
+}
+
 // Back to gifts buttons - return to gift selection screen
 const backToGifts1 = document.getElementById('backToGifts1');
 const backToGifts2 = document.getElementById('backToGifts2');
@@ -397,7 +417,13 @@ backToGifts1.addEventListener('click', () => {
     const giftSelectionScreen = document.getElementById('giftSelectionScreen');
     
     messageScreen.classList.remove('show');
-    giftSelectionScreen.classList.add('show');
+    
+    if (checkAllGiftsOpened()) {
+        const specialVideoScreen = document.getElementById('specialVideoScreen');
+        specialVideoScreen.classList.add('show');
+    } else {
+        giftSelectionScreen.classList.add('show');
+    }
 });
 
 backToGifts2.addEventListener('click', () => {
@@ -405,7 +431,52 @@ backToGifts2.addEventListener('click', () => {
     const giftSelectionScreen = document.getElementById('giftSelectionScreen');
     
     messageScreen2.classList.remove('show');
+    
+    if (checkAllGiftsOpened()) {
+        const specialVideoScreen = document.getElementById('specialVideoScreen');
+        specialVideoScreen.classList.add('show');
+    } else {
+        giftSelectionScreen.classList.add('show');
+    }
+});
+
+// SPECIAL VIDEO HANDLERS
+const playVideoBtn = document.getElementById('playVideoBtn');
+const closeVideo = document.getElementById('closeVideo');
+const videoPlayerModal = document.getElementById('videoPlayerModal');
+const specialVideo = document.getElementById('specialVideo');
+const backFromVideo = document.getElementById('backFromVideo');
+
+playVideoBtn.addEventListener('click', () => {
+    playSound('click');
+    videoPlayerModal.classList.remove('hidden');
+    specialVideo.focus();
+});
+
+closeVideo.addEventListener('click', () => {
+    videoPlayerModal.classList.add('hidden');
+    specialVideo.pause();
+    specialVideo.currentTime = 0;
+});
+
+backFromVideo.addEventListener('click', () => {
+    const specialVideoScreen = document.getElementById('specialVideoScreen');
+    const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+    
+    specialVideoScreen.classList.remove('show');
     giftSelectionScreen.classList.add('show');
+    
+    // Reset opened gifts for replay
+    openedGifts.clear();
+});
+
+// Close modal when clicking outside the video
+videoPlayerModal.addEventListener('click', (e) => {
+    if (e.target === videoPlayerModal) {
+        videoPlayerModal.classList.add('hidden');
+        specialVideo.pause();
+        specialVideo.currentTime = 0;
+    }
 });
 
 // ===== NEW FEATURES =====
