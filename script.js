@@ -20,6 +20,58 @@ if (IS_MOBILE) {
     };
 }
 
+// ============ LANDING PAGE TYPEWRITER ANIMATION ============
+
+const landingText = `Hey there, my love. 💕
+
+I wanted to take a moment to tell you something special. You make my days brighter, my heart fuller, and my world so much more beautiful. Every moment with you feels like a cherished gift.
+
+I've prepared something just for you - a little journey filled with memories, surprises, and heartfelt words. Each step will remind you of why you're so incredibly special to me.
+
+Are you ready to see what I've created?`;
+
+function typeWriterEffect() {
+    const landingParagraph = document.getElementById('landingText');
+    let charIndex = 0;
+    let isTyping = true;
+    
+    landingParagraph.classList.add('typing');
+    
+    function type() {
+        if (charIndex < landingText.length && isTyping) {
+            landingParagraph.textContent += landingText.charAt(charIndex);
+            charIndex++;
+            
+            // Variable typing speed for natural feel
+            const speed = charIndex % 10 === 0 ? 50 : 30;
+            setTimeout(type, speed);
+        }
+    }
+    
+    type();
+}
+
+// Landing page continue button handler
+const continueBtn = document.getElementById('continueBtn');
+if (continueBtn) {
+    continueBtn.addEventListener('click', () => {
+        const landingScreen = document.getElementById('landingScreen');
+        const questionCard = document.getElementById('questionCard');
+        
+        playSound('click');
+        landingScreen.classList.remove('show');
+        landingScreen.classList.add('hidden');
+        questionCard.classList.add('show');
+        
+        createParticles({ clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+    });
+}
+
+// Start typewriter animation when page loads
+window.addEventListener('load', () => {
+    setTimeout(typeWriterEffect, 300);
+});
+
 // ============ ENHANCEMENTS ============
 
 // 1. NEW YEAR THEME CHECK & SPECIAL CONFETTI
