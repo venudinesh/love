@@ -464,6 +464,78 @@ body {
     text-align: left;
 }
 
+.next-message-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 50%;
+    transform: translateY(50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.next-message-btn:hover {
+    background: white;
+    transform: translateY(50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Message Screen 2 */
+.message-screen-2 {
+    display: none;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-screen-2.show {
+    display: flex;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.message-title-2 {
+    font-family: 'Brush Script MT', cursive, 'Dancing Script', cursive;
+    font-size: 48px;
+    color: white;
+    margin-bottom: 40px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.message-content-2 {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 450px;
+}
+
+.message-text-2 {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    text-align: left;
+}
+
 /* Video Overlay (Gift 2) */
 .video-overlay {
     display: none;

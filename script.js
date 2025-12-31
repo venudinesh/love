@@ -122,6 +122,16 @@ videoOverlay.addEventListener('click', (e) => {
     }
 });
 
+// Next message button - navigate to second message
+const nextMessageBtn = document.getElementById('nextMessageBtn');
+nextMessageBtn.addEventListener('click', () => {
+    const messageScreen = document.getElementById('messageScreen');
+    const messageScreen2 = document.getElementById('messageScreen2');
+    
+    messageScreen.classList.remove('show');
+    messageScreen2.classList.add('show');
+});
+
 // Gift No button - show rejected screen
 giftNoBtn.addEventListener('click', () => {
     const giftScreen = document.getElementById('giftScreen');
