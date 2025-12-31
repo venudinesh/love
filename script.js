@@ -89,11 +89,37 @@ giftBoxes.forEach(box => {
             const messageScreen = document.getElementById('messageScreen');
             giftSelectionScreen.classList.remove('show');
             messageScreen.classList.add('show');
+        } else if (giftNumber === '2') {
+            // Show video overlay for second gift
+            const videoOverlay = document.getElementById('videoOverlay');
+            const giftVideo = document.getElementById('giftVideo');
+            videoOverlay.classList.add('show');
+            giftVideo.play();
         } else {
             // For other gifts, show alert
             alert('🎁 Yay! You opened the gift! 💕');
         }
     });
+});
+
+// Close video overlay
+const closeVideo = document.getElementById('closeVideo');
+const videoOverlay = document.getElementById('videoOverlay');
+const giftVideo = document.getElementById('giftVideo');
+
+closeVideo.addEventListener('click', () => {
+    videoOverlay.classList.remove('show');
+    giftVideo.pause();
+    giftVideo.currentTime = 0;
+});
+
+// Close video when clicking outside
+videoOverlay.addEventListener('click', (e) => {
+    if (e.target === videoOverlay) {
+        videoOverlay.classList.remove('show');
+        giftVideo.pause();
+        giftVideo.currentTime = 0;
+    }
 });
 
 // Gift No button - show rejected screen
