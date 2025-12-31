@@ -309,6 +309,46 @@ body {
     }
 }
 
+/* Rejected Screen */
+.rejected-screen {
+    display: none;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+}
+
+.rejected-screen.show {
+    display: block;
+}
+
+.btn-go-back {
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff85ad 100%);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-go-back:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
+}
+
+.btn-go-back:active {
+    transform: scale(0.95);
+}
+
 @media (max-width: 600px) {
     .question-card {
         padding: 30px 20px;

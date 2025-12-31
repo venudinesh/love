@@ -58,6 +58,7 @@ yesBtn.addEventListener('click', () => {
 const giftBtn = document.getElementById('giftBtn');
 const giftNoBtn = document.getElementById('giftNoBtn');
 const giftYesBtn = document.getElementById('giftYesBtn');
+const goBackBtn = document.getElementById('goBackBtn');
 
 giftBtn.addEventListener('click', () => {
     const successScreen = document.getElementById('successScreen');
@@ -70,4 +71,22 @@ giftBtn.addEventListener('click', () => {
 // Gift Yes button - accept the gift
 giftYesBtn.addEventListener('click', () => {
     alert('🎁 Yay! Gift accepted! 💕');
+});
+
+// Gift No button - show rejected screen
+giftNoBtn.addEventListener('click', () => {
+    const giftScreen = document.getElementById('giftScreen');
+    const rejectedScreen = document.getElementById('rejectedScreen');
+    
+    giftScreen.classList.remove('show');
+    rejectedScreen.classList.add('show');
+});
+
+// Go back button - return to gift screen
+goBackBtn.addEventListener('click', () => {
+    const rejectedScreen = document.getElementById('rejectedScreen');
+    const giftScreen = document.getElementById('giftScreen');
+    
+    rejectedScreen.classList.remove('show');
+    giftScreen.classList.add('show');
 });
