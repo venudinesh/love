@@ -119,7 +119,7 @@ const certificateScreen = document.getElementById('certificateScreen');
 const closeCertificateBtn = document.getElementById('backFromCertificate');
 const printCertificateBtn = document.getElementById('printCertificateBtn');
 const shareCertificateBtn = document.getElementById('shareCertificateBtn');
-const continueCertificateBtn = document.getElementById('continueCertificateBtn');
+const exitCertificateBtn = document.getElementById('exitCertificateBtn');
 
 if (closeCertificateBtn) {
     closeCertificateBtn.addEventListener('click', () => {
@@ -159,14 +159,26 @@ if (shareCertificateBtn) {
     });
 }
 
-if (continueCertificateBtn) {
-    continueCertificateBtn.addEventListener('click', () => {
-        const finalMessageScreen = document.getElementById('finalMessageScreen');
-        certificateScreen.classList.remove('show');
-        certificateScreen.classList.add('hidden');
-        finalMessageScreen.classList.remove('hidden');
-        finalMessageScreen.classList.add('show');
-        stopButterflyAnimation();
+if (exitCertificateBtn) {
+    exitCertificateBtn.addEventListener('click', () => {
+        playSound('success');
+        createConfetti('rainbow');
+        
+        // Fade out and close everything
+        setTimeout(() => {
+            certificateScreen.style.opacity = '0';
+            certificateScreen.style.transform = 'scale(0.8)';
+            certificateScreen.style.transition = 'all 0.6s ease-out';
+            
+            setTimeout(() => {
+                certificateScreen.classList.add('hidden');
+                stopButterflyAnimation();
+                hideConstellation();
+                alert('Thank you for the most beautiful journey. 💕\n\nYou mean the world to me. Always.');
+                // Reload the page to reset everything
+                location.reload();
+            }, 600);
+        }, 1000);
     });
 }
 

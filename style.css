@@ -2910,6 +2910,16 @@ body.new-year-theme .floating-quote {
     transform: translateY(0);
 }
 
+.btn-exit {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+    box-shadow: 0 5px 20px rgba(255, 20, 147, 0.5);
+}
+
+.btn-exit:hover {
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.7);
+    transform: translateY(-2px) scale(1.02);
+}
+
 @media (max-width: 768px) {
     .certificate-screen {
         padding: 20px !important;
