@@ -81,7 +81,18 @@ giftYesBtn.addEventListener('click', () => {
 const giftBoxes = document.querySelectorAll('.gift-box');
 giftBoxes.forEach(box => {
     box.addEventListener('click', () => {
-        alert('🎁 Yay! You opened the gift! 💕');
+        const giftNumber = box.getAttribute('data-gift');
+        const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+        
+        if (giftNumber === '1') {
+            // Show message screen for first gift
+            const messageScreen = document.getElementById('messageScreen');
+            giftSelectionScreen.classList.remove('show');
+            messageScreen.classList.add('show');
+        } else {
+            // For other gifts, show alert
+            alert('🎁 Yay! You opened the gift! 💕');
+        }
     });
 });
 

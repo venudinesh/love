@@ -418,6 +418,52 @@ body {
     margin-top: 20px;
 }
 
+/* Message Screen (Gift 1) */
+.message-screen {
+    display: none;
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a8c 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-screen.show {
+    display: flex;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.message-title {
+    font-family: 'Brush Script MT', cursive, 'Dancing Script', cursive;
+    font-size: 48px;
+    color: white;
+    margin-bottom: 40px;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.message-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+}
+
+.message-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+}
+
 @media (max-width: 600px) {
     .question-card {
         padding: 30px 20px;
