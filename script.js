@@ -477,6 +477,7 @@ closeVideo.addEventListener('click', () => {
         const finalMessageScreen = document.getElementById('finalMessageScreen');
         
         specialVideoScreen.classList.remove('show');
+        finalMessageScreen.classList.remove('hidden');
         finalMessageScreen.classList.add('show');
         
         createConfetti('rainbow');
@@ -508,6 +509,7 @@ videoPlayerModal.addEventListener('click', (e) => {
             const finalMessageScreen = document.getElementById('finalMessageScreen');
             
             specialVideoScreen.classList.remove('show');
+            finalMessageScreen.classList.remove('hidden');
             finalMessageScreen.classList.add('show');
             
             createConfetti('rainbow');
@@ -533,6 +535,7 @@ if (finishVideoBtn) {
             const finalMessageScreen = document.getElementById('finalMessageScreen');
             
             specialVideoScreen.classList.remove('show');
+            finalMessageScreen.classList.remove('hidden');
             finalMessageScreen.classList.add('show');
             
             createConfetti('rainbow');
