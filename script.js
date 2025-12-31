@@ -412,3 +412,64 @@ document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeGallery.click();
     }
 });
+
+// ===== CUSTOM CURSOR WITH HEART TRAIL =====
+
+const cursorHeart = document.createElement('div');
+cursorHeart.classList.add('custom-cursor');
+cursorHeart.innerHTML = '💗';
+document.body.appendChild(cursorHeart);
+
+let mouseX = 0;
+let mouseY = 0;
+let lastTrailTime = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Update cursor position
+    cursorHeart.style.left = mouseX + 'px';
+    cursorHeart.style.top = mouseY + 'px';
+    
+    // Create trail hearts (throttled to every 30ms)
+    const now = Date.now();
+    if (now - lastTrailTime > 30) {
+        createCursorTrail(mouseX, mouseY);
+        lastTrailTime = now;
+    }
+});
+
+function createCursorTrail(x, y) {
+    const trail = document.createElement('div');
+    trail.classList.add('cursor-heart-trail');
+    
+    const hearts = ['💗', '❤️', '💕', '💖'];
+    trail.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+    
+    trail.style.left = x + 'px';
+    trail.style.top = y + 'px';
+    
+    // Random offset for trail
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 20;
+    const tx = Math.cos(angle) * distance;
+    const ty = Math.sin(angle) * distance;
+    
+    trail.style.setProperty('--tx', tx + 'px');
+    trail.style.setProperty('--ty', ty + 'px');
+    
+    document.body.appendChild(trail);
+    
+    // Remove after animation
+    setTimeout(() => trail.remove(), 1500);
+}
+
+// Hide cursor heart on mouse leave
+document.addEventListener('mouseleave', () => {
+    cursorHeart.style.display = 'none';
+});
+
+document.addEventListener('mouseenter', () => {
+    cursorHeart.style.display = 'flex';
+});

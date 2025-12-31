@@ -13,7 +13,7 @@ body {
     align-items: center;
     position: relative;
     overflow-x: hidden;
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><text y="20" font-size="24">❤️</text></svg>') 0 0, auto;
+    cursor: none;
 }
 
 /* Background GIFs */
@@ -1109,6 +1109,41 @@ body {
 @keyframes emojiRain {
     to {
         transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* CUSTOM CURSOR */
+.custom-cursor {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 50;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translate(-50%, -50%);
+}
+
+/* CURSOR HEART TRAIL */
+.cursor-heart-trail {
+    position: fixed;
+    font-size: 20px;
+    pointer-events: none;
+    z-index: 49;
+    opacity: 0.8;
+    animation: trailFloat 1.5s ease-out forwards;
+}
+
+@keyframes trailFloat {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
         opacity: 0;
     }
 }
