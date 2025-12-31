@@ -77,11 +77,11 @@ giftYesBtn.addEventListener('click', () => {
     giftSelectionScreen.classList.add('show');
 });
 
-// Gift box click handlers
-const giftBoxes = document.querySelectorAll('.gift-box');
-giftBoxes.forEach(box => {
-    box.addEventListener('click', () => {
-        const giftNumber = box.getAttribute('data-gift');
+// Open gift button handlers
+const openGiftBtns = document.querySelectorAll('.open-gift-btn');
+openGiftBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const giftNumber = btn.getAttribute('data-gift');
         const giftSelectionScreen = document.getElementById('giftSelectionScreen');
         
         if (giftNumber === '1') {
@@ -100,9 +100,6 @@ giftBoxes.forEach(box => {
             const ticTacToeScreen = document.getElementById('ticTacToeScreen');
             giftSelectionScreen.classList.remove('show');
             ticTacToeScreen.classList.add('show');
-        } else {
-            // For other gifts, show alert
-            alert('🎁 Yay! You opened the gift! 💕');
         }
     });
 });
