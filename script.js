@@ -470,6 +470,18 @@ closeVideo.addEventListener('click', () => {
     videoPlayerModal.classList.add('hidden');
     specialVideo.pause();
     specialVideo.currentTime = 0;
+    
+    // Show final love message
+    setTimeout(() => {
+        const specialVideoScreen = document.getElementById('specialVideoScreen');
+        const finalMessageScreen = document.getElementById('finalMessageScreen');
+        
+        specialVideoScreen.classList.remove('show');
+        finalMessageScreen.classList.add('show');
+        
+        createConfetti('rainbow');
+        createHeartSparkles();
+    }, 500);
 });
 
 backFromVideo.addEventListener('click', () => {
@@ -489,8 +501,43 @@ videoPlayerModal.addEventListener('click', (e) => {
         videoPlayerModal.classList.add('hidden');
         specialVideo.pause();
         specialVideo.currentTime = 0;
+        
+        // Show final love message
+        setTimeout(() => {
+            const specialVideoScreen = document.getElementById('specialVideoScreen');
+            const finalMessageScreen = document.getElementById('finalMessageScreen');
+            
+            specialVideoScreen.classList.remove('show');
+            finalMessageScreen.classList.add('show');
+            
+            createConfetti('rainbow');
+            createHeartSparkles();
+        }, 500);
     }
 });
+
+// Final love message handlers
+const closeWebsiteBtn = document.getElementById('closeWebsiteBtn');
+if (closeWebsiteBtn) {
+    closeWebsiteBtn.addEventListener('click', () => {
+        playSound('success');
+        createConfetti('rainbow');
+        createConfetti('gold');
+        createHeartSparkles();
+        
+        // After celebration, fade out
+        setTimeout(() => {
+            const finalMessageScreen = document.getElementById('finalMessageScreen');
+            finalMessageScreen.style.opacity = '0';
+            finalMessageScreen.style.transform = 'scale(0.8)';
+            finalMessageScreen.style.transition = 'all 0.8s ease-out';
+            
+            setTimeout(() => {
+                alert('Thank you for this beautiful moment. 💕 I love you!');
+            }, 800);
+        }, 2000);
+    });
+}
 
 // ===== NEW FEATURES =====
 
