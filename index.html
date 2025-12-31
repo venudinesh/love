@@ -86,6 +86,12 @@
         </div>
     </div>
 
+    <!-- Floating Butterflies Container -->
+    <div id="butterfliesContainer" class="butterflies-container"></div>
+
+    <!-- Constellation Map Canvas -->
+    <canvas id="constellationCanvas" class="constellation-canvas hidden"></canvas>
+
     <!-- Heart Animation -->
     <div class="heart-animation" id="heartAnimation">
         <div class="tenor-gif-embed" data-postid="14567147" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/heart-suessem-sanem-jetaime-zolwer-gif-14567147">Heart Suessem Sticker</a>from <a href="https://tenor.com/search/heart-stickers">Heart Stickers</a></div>
@@ -260,6 +266,31 @@
                     Your browser does not support the video tag.
                 </video>
                 <button class="finish-video-btn" id="finishVideoBtn">FINISH</button>
+            </div>
+        </div>
+
+        <!-- Certificate of Love Screen -->
+        <div class="certificate-screen hidden" id="certificateScreen">
+            <button class="top-left-back-btn" id="backFromCertificate">‹</button>
+            <div class="certificate-container">
+                <div class="certificate-border">
+                    <div class="certificate-content">
+                        <h1 class="certificate-title">Certificate of Love</h1>
+                        <div class="certificate-divider"></div>
+                        <p class="certificate-text">This is to certify that</p>
+                        <p class="certificate-recipient" id="certificateRecipient">My Love</p>
+                        <p class="certificate-text">has captured my heart completely and brings endless joy to my life.</p>
+                        <p class="certificate-text">You are cherished, valued, and deeply loved.</p>
+                        <div class="certificate-divider"></div>
+                        <p class="certificate-date" id="certificateDate"></p>
+                        <p class="certificate-signature">With All My Love 💕</p>
+                        <div class="certificate-buttons">
+                            <button class="btn btn-certificate" id="printCertificateBtn">🖨️ Print</button>
+                            <button class="btn btn-certificate" id="shareCertificateBtn">📤 Share</button>
+                            <button class="btn btn-certificate" id="continueCertificateBtn">Continue</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

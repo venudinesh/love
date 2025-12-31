@@ -72,6 +72,207 @@ window.addEventListener('load', () => {
     setTimeout(typeWriterEffect, 300);
 });
 
+// ============ FLOATING BUTTERFLIES ============
+function createButterflies() {
+    const container = document.getElementById('butterfliesContainer');
+    const butterflies = ['🦋', '🦋'];
+    const butterflyCount = IS_MOBILE ? 3 : 5;
+    
+    for (let i = 0; i < butterflyCount; i++) {
+        const butterfly = document.createElement('div');
+        butterfly.classList.add('butterfly');
+        butterfly.textContent = butterflies[Math.floor(Math.random() * butterflies.length)];
+        
+        const startX = Math.random() * window.innerWidth;
+        const duration = 10 + Math.random() * 10;
+        const delay = Math.random() * 5;
+        
+        butterfly.style.left = startX + 'px';
+        butterfly.style.bottom = '-50px';
+        butterfly.style.animationDuration = duration + 's';
+        butterfly.style.animationDelay = delay + 's';
+        
+        container.appendChild(butterfly);
+        
+        setTimeout(() => butterfly.remove(), (duration + delay) * 1000);
+    }
+}
+
+// Create butterflies periodically on landing and main pages
+let butterflyInterval = null;
+
+function startButterflyAnimation() {
+    if (butterflyInterval) clearInterval(butterflyInterval);
+    createButterflies();
+    butterflyInterval = setInterval(createButterflies, 8000);
+}
+
+function stopButterflyAnimation() {
+    if (butterflyInterval) {
+        clearInterval(butterflyInterval);
+        butterflyInterval = null;
+    }
+}
+
+// ============ CERTIFICATE OF LOVE ============
+const certificateScreen = document.getElementById('certificateScreen');
+const closeCertificateBtn = document.getElementById('backFromCertificate');
+const printCertificateBtn = document.getElementById('printCertificateBtn');
+const shareCertificateBtn = document.getElementById('shareCertificateBtn');
+const continueCertificateBtn = document.getElementById('continueCertificateBtn');
+
+if (closeCertificateBtn) {
+    closeCertificateBtn.addEventListener('click', () => {
+        const finalMessageScreen = document.getElementById('finalMessageScreen');
+        certificateScreen.classList.remove('show');
+        certificateScreen.classList.add('hidden');
+        finalMessageScreen.classList.remove('hidden');
+        finalMessageScreen.classList.add('show');
+        stopButterflyAnimation();
+    });
+}
+
+if (printCertificateBtn) {
+    printCertificateBtn.addEventListener('click', () => {
+        window.print();
+    });
+}
+
+if (shareCertificateBtn) {
+    shareCertificateBtn.addEventListener('click', () => {
+        const url = window.location.href;
+        const text = "I received a beautiful Certificate of Love! 💕";
+        
+        if (navigator.share) {
+            navigator.share({
+                title: 'Certificate of Love',
+                text: text,
+                url: url
+            });
+        } else {
+            // Fallback: copy to clipboard
+            const shareText = text + '\n' + url;
+            navigator.clipboard.writeText(shareText).then(() => {
+                alert('Certificate link copied to clipboard! 📋');
+            });
+        }
+    });
+}
+
+if (continueCertificateBtn) {
+    continueCertificateBtn.addEventListener('click', () => {
+        const finalMessageScreen = document.getElementById('finalMessageScreen');
+        certificateScreen.classList.remove('show');
+        certificateScreen.classList.add('hidden');
+        finalMessageScreen.classList.remove('hidden');
+        finalMessageScreen.classList.add('show');
+        stopButterflyAnimation();
+    });
+}
+
+// ============ CONSTELLATION MAP ============
+function createConstellationMap() {
+    const canvas = document.getElementById('constellationCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Set canvas size
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    // Clear canvas
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Create a heart constellation with stars
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const scale = 80;
+    
+    // Heart shape coordinates (normalized)
+    const heartShape = [
+        // Left side of heart
+        [0, -0.7], [0.35, -1], [0.5, -0.7],
+        [0.5, -0.3], [0.3, -0.1], [0, 0.6],
+        // Right side of heart
+        [-0.3, -0.1], [-0.5, -0.3], [-0.5, -0.7], 
+        [-0.35, -1]
+    ];
+    
+    // Draw constellation lines and stars
+    ctx.strokeStyle = 'rgba(255, 105, 180, 0.6)';
+    ctx.fillStyle = 'rgba(255, 20, 147, 1)';
+    ctx.lineWidth = 2;
+    
+    // Draw lines between stars
+    for (let i = 0; i < heartShape.length - 1; i++) {
+        const p1 = heartShape[i];
+        const p2 = heartShape[i + 1];
+        
+        const x1 = centerX + p1[0] * scale;
+        const y1 = centerY + p1[1] * scale;
+        const x2 = centerX + p2[0] * scale;
+        const y2 = centerY + p2[1] * scale;
+        
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+    }
+    
+    // Draw stars at each point
+    heartShape.forEach((point, index) => {
+        const x = centerX + point[0] * scale;
+        const y = centerY + point[1] * scale;
+        
+        // Glowing star animation
+        ctx.beginPath();
+        ctx.arc(x, y, 4, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // Add glow effect
+        ctx.shadowColor = 'rgba(255, 20, 147, 0.8)';
+        ctx.shadowBlur = 15;
+        ctx.strokeStyle = 'rgba(255, 105, 180, 0.8)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+    });
+    
+    ctx.shadowColor = 'transparent';
+}
+
+function showConstellation() {
+    const canvas = document.getElementById('constellationCanvas');
+    canvas.classList.remove('hidden');
+    canvas.classList.add('show');
+    
+    // Animate constellation appearance
+    canvas.style.opacity = '0';
+    canvas.style.transition = 'opacity 1s ease-in';
+    
+    setTimeout(() => {
+        canvas.style.opacity = '1';
+        createConstellationMap();
+    }, 100);
+}
+
+function hideConstellation() {
+    const canvas = document.getElementById('constellationCanvas');
+    canvas.classList.add('hidden');
+    canvas.classList.remove('show');
+}
+
+// Handle constellation on landing page
+window.addEventListener('load', () => {
+    showConstellation();
+});
+
+// Hide constellation when leaving landing page, show on certificate
+const continueBtnLanding = document.getElementById('continueBtn');
+if (continueBtnLanding) {
+    const originalContinueHandler = continueBtnLanding.onclick;
+    continueBtnLanding.addEventListener('click', hideConstellation);
+}
+
 // ============ ENHANCEMENTS ============
 
 // 1. NEW YEAR THEME CHECK & SPECIAL CONFETTI
@@ -649,17 +850,32 @@ if (closeWebsiteBtn) {
         createConfetti('gold');
         createHeartSparkles();
         
-        // After celebration, fade out
+        // Show certificate after celebration
         setTimeout(() => {
             const finalMessageScreen = document.getElementById('finalMessageScreen');
-            finalMessageScreen.style.opacity = '0';
-            finalMessageScreen.style.transform = 'scale(0.8)';
-            finalMessageScreen.style.transition = 'all 0.8s ease-out';
+            const certificateScreen = document.getElementById('certificateScreen');
             
-            setTimeout(() => {
-                alert('Thank you for this beautiful moment. 💕 I love you!');
-            }, 800);
+            finalMessageScreen.classList.remove('show');
+            finalMessageScreen.classList.add('hidden');
+            certificateScreen.classList.remove('hidden');
+            certificateScreen.classList.add('show');
+            
+            // Set certificate date
+            const today = new Date();
+            const dateStr = today.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            document.getElementById('certificateDate').textContent = 'Issued: ' + dateStr;
+            
+            // Start butterfly animation for certificate
+            startButterflyAnimation();
+            
+            // Show constellation map on certificate
+            showConstellation();
         }, 2000);
+
     });
 }
 

@@ -2697,3 +2697,198 @@ body.new-year-theme .floating-quote {
         max-height: 80vh !important;
     }
 }
+
+/* ===== FLOATING BUTTERFLIES ===== */
+.butterflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.butterfly {
+    position: fixed;
+    font-size: 30px;
+    pointer-events: none;
+    animation: butterfly-float 10s infinite ease-in-out;
+}
+
+@keyframes butterfly-float {
+    0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(50px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== CONSTELLATION MAP ===== */
+.constellation-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 8;
+}
+
+.constellation-canvas.show {
+    display: block;
+}
+
+/* ===== CERTIFICATE OF LOVE ===== */
+.certificate-screen {
+    background: linear-gradient(135deg, #fff0f5 0%, #ffe4e1 100%);
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 15px 50px rgba(255, 20, 147, 0.2);
+    text-align: center;
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+}
+
+.certificate-screen.show {
+    display: flex;
+    animation: fadeInPage 0.8s ease-in-out;
+}
+
+.certificate-screen.hidden {
+    display: none !important;
+}
+
+.certificate-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate-border {
+    border: 3px solid;
+    border-image: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%) 1;
+    border-radius: 10px;
+    padding: 40px 30px;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.certificate-content {
+    text-align: center;
+}
+
+.certificate-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+}
+
+.certificate-divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff1493, transparent);
+    margin: 20px 0;
+}
+
+.certificate-text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+.certificate-recipient {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff1493;
+    margin: 15px 0;
+    font-style: italic;
+}
+
+.certificate-date {
+    font-size: 14px;
+    color: #888;
+    margin-top: 20px;
+}
+
+.certificate-signature {
+    font-size: 18px;
+    color: #333;
+    margin: 15px 0;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.certificate-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.btn-certificate {
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
+}
+
+.btn-certificate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
+}
+
+.btn-certificate:active {
+    transform: translateY(0);
+}
+
+@media print {
+    .certificate-screen {
+        background: white;
+        box-shadow: none;
+        padding: 0;
+    }
+    
+    .certificate-border {
+        box-shadow: none;
+        border: none;
+        padding: 40px;
+    }
+    
+    .certificate-buttons,
+    .top-left-back-btn {
+        display: none !important;
+    }
+}
