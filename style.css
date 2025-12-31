@@ -1280,6 +1280,10 @@ body.new-year-theme .floating-quote {
     align-items: center;
 }
 
+.final-message-screen.hidden {
+    display: none !important;
+}
+
 .final-message-screen.show {
     display: flex;
     animation: fadeInPage 0.8s ease-in-out;
