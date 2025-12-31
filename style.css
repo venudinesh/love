@@ -1264,8 +1264,8 @@ body.new-year-theme .floating-quote {
 
 .finish-video-btn {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    top: 20px;
+    right: 65px;
     background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
     color: white;
     border: none;
