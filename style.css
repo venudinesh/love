@@ -29,50 +29,71 @@ body {
 .bg-gif {
     position: absolute;
     opacity: 0.75;
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
 }
 
 .bg-gif-1 {
-    top: 10%;
-    left: 5%;
-    width: 100px;
+    top: 8%;
+    left: 2%;
+    width: 150px;
     animation: float 6s ease-in-out infinite;
 }
 
 .bg-gif-2 {
-    top: 25%;
-    right: 8%;
-    width: 110px;
+    top: 20%;
+    right: 5%;
+    width: 160px;
     animation: float 7s ease-in-out infinite 1s;
 }
 
 .bg-gif-3 {
-    top: 50%;
-    left: 3%;
-    width: 90px;
+    top: 45%;
+    left: 8%;
+    width: 140px;
     animation: float 8s ease-in-out infinite 2s;
 }
 
 .bg-gif-4 {
-    top: 65%;
-    right: 5%;
-    width: 105px;
+    top: 60%;
+    right: 8%;
+    width: 155px;
     animation: float 6.5s ease-in-out infinite 1.5s;
 }
 
 .bg-gif-5 {
-    bottom: 15%;
-    left: 12%;
-    width: 95px;
+    bottom: 18%;
+    left: 15%;
+    width: 145px;
     animation: float 7.5s ease-in-out infinite 0.5s;
 }
 
 .bg-gif-6 {
-    bottom: 20%;
-    right: 10%;
-    width: 115px;
+    bottom: 25%;
+    right: 12%;
+    width: 160px;
     animation: float 6s ease-in-out infinite 2.5s;
+}
+
+.bg-gif-7 {
+    top: 35%;
+    right: 15%;
+    width: 150px;
+    animation: float 7.2s ease-in-out infinite 3s;
+}
+
+.bg-gif-8 {
+    bottom: 10%;
+    left: 3%;
+    width: 155px;
+    animation: float 6.8s ease-in-out infinite 1.2s;
+}
+
+.bg-gif-9 {
+    top: 15%;
+    left: 18%;
+    width: 140px;
+    animation: float 7.5s ease-in-out infinite 2.3s;
 }
 
 @keyframes float {
@@ -80,7 +101,7 @@ body {
         transform: translateY(0px) rotate(0deg);
     }
     50% {
-        transform: translateY(-20px) rotate(3deg);
+        transform: translateY(-25px) rotate(3deg);
     }
 }
 
