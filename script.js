@@ -110,8 +110,41 @@ backBtn.addEventListener('click', () => {
     const ticTacToeScreen = document.getElementById('ticTacToeScreen');
     const giftSelectionScreen = document.getElementById('giftSelectionScreen');
     
+    // Reset the game state
+    const middleHeart = document.getElementById('middleHeart');
+    const winMessage = document.getElementById('winMessage');
+    const hintMessage = document.getElementById('hintMessage');
+    const middleCell = document.getElementById('middleCell');
+    
+    middleHeart.classList.remove('show');
+    middleHeart.classList.add('hidden');
+    winMessage.classList.remove('show');
+    winMessage.classList.add('hidden');
+    hintMessage.classList.remove('hidden');
+    middleCell.classList.add('clickable');
+    
     ticTacToeScreen.classList.remove('show');
     giftSelectionScreen.classList.add('show');
+});
+
+// Middle cell click - reveal heart and win message
+const middleCell = document.getElementById('middleCell');
+middleCell.addEventListener('click', () => {
+    const middleHeart = document.getElementById('middleHeart');
+    const winMessage = document.getElementById('winMessage');
+    const hintMessage = document.getElementById('hintMessage');
+    
+    // Show the heart with animation
+    middleHeart.classList.remove('hidden');
+    middleHeart.classList.add('show');
+    
+    // Show win message and hide hint
+    winMessage.classList.remove('hidden');
+    winMessage.classList.add('show');
+    hintMessage.classList.add('hidden');
+    
+    // Remove clickable class
+    middleCell.classList.remove('clickable');
 });
 
 // Close video overlay

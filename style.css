@@ -660,10 +660,45 @@ body {
     z-index: 1;
 }
 
+.cell.clickable {
+    cursor: pointer;
+    background: rgba(255, 200, 200, 0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.cell.clickable:hover {
+    background: rgba(255, 150, 150, 0.5);
+    transform: scale(1.05);
+}
+
 .heart {
     font-size: 60px;
     color: #d64545;
     filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.2));
+}
+
+.heart.hidden {
+    display: none;
+}
+
+.heart.show {
+    display: block;
+    animation: popIn 0.5s ease-out;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .x-mark {
@@ -678,6 +713,26 @@ body {
     color: #333;
     font-weight: normal;
     margin-top: 20px;
+}
+
+.tictactoe-message.hidden {
+    display: none;
+}
+
+.tictactoe-message.show {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.tictactoe-hint {
+    font-size: 18px;
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+}
+
+.tictactoe-hint.hidden {
+    display: none;
 }
 
 .back-btn {
