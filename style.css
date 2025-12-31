@@ -34,169 +34,169 @@ body {
 }
 
 .bg-gif-1 {
-    top: 8%;
-    left: 2%;
+    top: 5%;
+    left: 5%;
     width: 150px;
     animation: float 6s ease-in-out infinite;
 }
 
 .bg-gif-2 {
-    top: 20%;
-    right: 5%;
+    top: 5%;
+    left: 20%;
     width: 160px;
     animation: float 7s ease-in-out infinite 1s;
 }
 
 .bg-gif-3 {
-    top: 45%;
-    left: 8%;
+    top: 5%;
+    left: 35%;
     width: 140px;
     animation: float 8s ease-in-out infinite 2s;
 }
 
 .bg-gif-4 {
-    top: 60%;
-    right: 8%;
+    top: 5%;
+    left: 50%;
     width: 155px;
     animation: float 6.5s ease-in-out infinite 1.5s;
 }
 
 .bg-gif-5 {
-    bottom: 18%;
-    left: 15%;
+    top: 5%;
+    left: 65%;
     width: 145px;
     animation: float 7.5s ease-in-out infinite 0.5s;
 }
 
 .bg-gif-6 {
-    bottom: 25%;
-    right: 12%;
+    top: 5%;
+    right: 5%;
     width: 160px;
     animation: float 6s ease-in-out infinite 2.5s;
 }
 
 .bg-gif-7 {
-    top: 35%;
-    right: 15%;
+    top: 28%;
+    left: 10%;
     width: 150px;
     animation: float 7.2s ease-in-out infinite 3s;
 }
 
 .bg-gif-8 {
-    bottom: 10%;
-    left: 3%;
+    top: 28%;
+    left: 25%;
     width: 155px;
     animation: float 6.8s ease-in-out infinite 1.2s;
 }
 
 .bg-gif-9 {
-    top: 15%;
-    left: 18%;
+    top: 28%;
+    left: 40%;
     width: 140px;
     animation: float 7.5s ease-in-out infinite 2.3s;
 }
 
 .bg-gif-10 {
     top: 28%;
-    left: 25%;
+    left: 55%;
     width: 145px;
     animation: float 7s ease-in-out infinite 0.8s;
 }
 
 .bg-gif-11 {
-    top: 52%;
-    right: 3%;
+    top: 28%;
+    left: 70%;
     width: 160px;
     animation: float 6.5s ease-in-out infinite 2.1s;
 }
 
 .bg-gif-12 {
-    bottom: 35%;
-    left: 5%;
+    top: 28%;
+    right: 5%;
     width: 150px;
     animation: float 7.3s ease-in-out infinite 1.7s;
 }
 
 .bg-gif-13 {
-    top: 12%;
-    right: 20%;
+    top: 51%;
+    left: 5%;
     width: 155px;
     animation: float 6.8s ease-in-out infinite 2.9s;
 }
 
 .bg-gif-14 {
-    top: 50%;
-    left: 30%;
+    top: 51%;
+    left: 20%;
     width: 140px;
     animation: float 7.6s ease-in-out infinite 0.3s;
 }
 
 .bg-gif-15 {
-    bottom: 40%;
-    right: 20%;
+    top: 51%;
+    left: 35%;
     width: 160px;
     animation: float 6.2s ease-in-out infinite 1.6s;
 }
 
 .bg-gif-16 {
-    top: 38%;
-    left: 12%;
+    top: 51%;
+    left: 50%;
     width: 150px;
     animation: float 7.1s ease-in-out infinite 2.4s;
 }
 
 .bg-gif-17 {
-    top: 68%;
-    right: 25%;
+    top: 51%;
+    left: 65%;
     width: 155px;
     animation: float 6.9s ease-in-out infinite 1.1s;
 }
 
 .bg-gif-18 {
-    bottom: 5%;
-    left: 25%;
+    top: 51%;
+    right: 5%;
     width: 145px;
     animation: float 7.4s ease-in-out infinite 2.7s;
 }
 
 .bg-gif-19 {
-    top: 25%;
-    left: 40%;
+    bottom: 5%;
+    left: 10%;
     width: 140px;
     animation: float 6.6s ease-in-out infinite 0.6s;
 }
 
 .bg-gif-20 {
-    bottom: 20%;
-    right: 3%;
+    bottom: 5%;
+    left: 25%;
     width: 160px;
     animation: float 7.2s ease-in-out infinite 1.9s;
 }
 
 .bg-gif-21 {
-    top: 42%;
-    right: 35%;
+    bottom: 5%;
+    left: 40%;
     width: 150px;
     animation: float 6.7s ease-in-out infinite 2.2s;
 }
 
 .bg-gif-22 {
-    bottom: 30%;
-    left: 50%;
+    bottom: 5%;
+    left: 55%;
     width: 155px;
     animation: float 7.5s ease-in-out infinite 0.9s;
 }
 
 .bg-gif-23 {
-    top: 72%;
-    left: 20%;
+    bottom: 5%;
+    left: 70%;
     width: 140px;
     animation: float 6.4s ease-in-out infinite 2.5s;
 }
 
 .bg-gif-24 {
-    top: 5%;
-    right: 40%;
+    bottom: 5%;
+    right: 5%;
     width: 160px;
     animation: float 7.3s ease-in-out infinite 1.4s;
 }
