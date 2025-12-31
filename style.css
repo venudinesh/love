@@ -33,6 +33,14 @@ body {
     height: 140px;
 }
 
+.tenor-gif-embed {
+    background: transparent !important;
+}
+
+.tenor-gif-embed iframe {
+    background: transparent !important;
+}
+
 .bg-gif-1 {
     top: 5%;
     left: 5%;
