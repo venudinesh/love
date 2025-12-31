@@ -1,6 +1,8 @@
 // ============ ENHANCEMENTS ============
 
-// 1. NEW YEAR THEME CHECK
+// 1. NEW YEAR THEME CHECK & SPECIAL CONFETTI
+let isNewYearMode = false;
+
 function checkNewYearTheme() {
     const today = new Date();
     const month = today.getMonth() + 1;
@@ -8,9 +10,42 @@ function checkNewYearTheme() {
     
     if ((month === 12 && day === 31) || (month === 1 && day === 1)) {
         document.body.classList.add('new-year-theme');
+        isNewYearMode = true;
+        
+        // Special New Year celebration every 30 seconds
+        setInterval(() => {
+            createNewYearCelebration();
+        }, 30000);
     }
 }
 checkNewYearTheme();
+
+// Special New Year & Love Celebration
+function createNewYearCelebration() {
+    if (isNewYearMode) {
+        createConfetti('gold');
+        setTimeout(() => createConfetti('rainbow'), 300);
+        createHeartSparkles();
+    }
+}
+
+// Heart Sparkles for New Year theme
+function createHeartSparkles() {
+    for (let i = 0; i < 8; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.innerHTML = '💖';
+        sparkle.style.position = 'fixed';
+        sparkle.style.fontSize = '30px';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.top = Math.random() * 100 + '%';
+        sparkle.style.zIndex = '5';
+        sparkle.style.pointerEvents = 'none';
+        sparkle.style.animation = 'sparkleFloat 2s ease-out forwards';
+        document.body.appendChild(sparkle);
+        
+        setTimeout(() => sparkle.remove(), 2000);
+    }
+}
 
 // 2. PARALLAX SCROLLING
 document.addEventListener('mousemove', (e) => {
@@ -37,8 +72,19 @@ const quotes = [
     "You're the one I want forever 💝"
 ];
 
+const newYearQuotes = [
+    "Happy New Year, my love 🎆💕",
+    "2026 starts with you 💖✨",
+    "Forever begins now 🥂❤️",
+    "My New Year wish: you, always 💝",
+    "Cheers to us 🎉💗",
+    "Happy New Year, soulmate 🎊💑",
+    "Another year of loving you 🥰💕"
+];
+
 function createFloatingQuote() {
-    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    const quoteList = isNewYearMode ? newYearQuotes : quotes;
+    const quote = quoteList[Math.floor(Math.random() * quoteList.length)];
     const floatingText = document.createElement('div');
     floatingText.className = 'floating-quote';
     floatingText.textContent = quote;
