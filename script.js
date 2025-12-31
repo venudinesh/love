@@ -239,6 +239,39 @@ yesBtn.addEventListener('click', () => {
     }, 3000);
 });
 
+// Back from success screen to question
+const backFromSuccess = document.getElementById('backFromSuccess');
+if (backFromSuccess) {
+    backFromSuccess.addEventListener('click', () => {
+        const successScreen = document.getElementById('successScreen');
+        const questionCard = document.getElementById('questionCard');
+        successScreen.classList.remove('show');
+        questionCard.style.display = 'block';
+    });
+}
+
+// Back from gift screen to success
+const backFromGift = document.getElementById('backFromGift');
+if (backFromGift) {
+    backFromGift.addEventListener('click', () => {
+        const giftScreen = document.getElementById('giftScreen');
+        const successScreen = document.getElementById('successScreen');
+        giftScreen.classList.remove('show');
+        successScreen.classList.add('show');
+    });
+}
+
+// Back from gift selection to gift screen
+const backFromGiftSelection = document.getElementById('backFromGiftSelection');
+if (backFromGiftSelection) {
+    backFromGiftSelection.addEventListener('click', () => {
+        const giftSelectionScreen = document.getElementById('giftSelectionScreen');
+        const giftScreen = document.getElementById('giftScreen');
+        giftSelectionScreen.classList.remove('show');
+        giftScreen.classList.add('show');
+    });
+}
+
 // Gift button action
 const giftBtn = document.getElementById('giftBtn');
 const giftNoBtn = document.getElementById('giftNoBtn');
@@ -350,26 +383,6 @@ middleCell.addEventListener('click', () => {
     
     // Remove clickable class
     middleCell.classList.remove('clickable');
-});
-
-// Close video overlay
-const closeVideo = document.getElementById('closeVideo');
-const videoOverlay = document.getElementById('videoOverlay');
-const giftVideo = document.getElementById('giftVideo');
-
-closeVideo.addEventListener('click', () => {
-    videoOverlay.classList.remove('show');
-    giftVideo.pause();
-    giftVideo.currentTime = 0;
-});
-
-// Close video when clicking outside
-videoOverlay.addEventListener('click', (e) => {
-    if (e.target === videoOverlay) {
-        videoOverlay.classList.remove('show');
-        giftVideo.pause();
-        giftVideo.currentTime = 0;
-    }
 });
 
 // Next message button - navigate to second message
@@ -684,40 +697,4 @@ document.addEventListener('mouseenter', () => {
     cursorHeart.style.display = 'flex';
 });
 
-// ===== TOP LEFT BACK BUTTONS =====
-
-// Back from success screen to question card
-const backFromSuccess = document.getElementById('backFromSuccess');
-if (backFromSuccess) {
-    backFromSuccess.addEventListener('click', () => {
-        const successScreen = document.getElementById('successScreen');
-        const questionCard = document.getElementById('questionCard');
-        
-        successScreen.classList.remove('show');
-        questionCard.style.display = 'block';
-    });
-}
-
-// Back from gift screen to success screen
-const backFromGift = document.getElementById('backFromGift');
-if (backFromGift) {
-    backFromGift.addEventListener('click', () => {
-        const giftScreen = document.getElementById('giftScreen');
-        const successScreen = document.getElementById('successScreen');
-        
-        giftScreen.classList.remove('show');
-        successScreen.classList.add('show');
-    });
-}
-
-// Back from gift selection screen to gift screen
-const backFromGiftSelection = document.getElementById('backFromGiftSelection');
-if (backFromGiftSelection) {
-    backFromGiftSelection.addEventListener('click', () => {
-        const giftSelectionScreen = document.getElementById('giftSelectionScreen');
-        const giftScreen = document.getElementById('giftScreen');
-        
-        giftSelectionScreen.classList.remove('show');
-        giftScreen.classList.add('show');
-    });
-}
+// ===== HELPER FUNCTIONS & AUTO-INITIALIZATION =====
