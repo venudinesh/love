@@ -1325,11 +1325,6 @@ body {
     transition: all 0.3s ease;
 }
 
-.btn-add-memory:hover {
-    background: #ff69b4;
-    transform: scale(1.05);
-}
-
 /* PHOTO GALLERY */
 .photo-gallery-modal {
     position: fixed;

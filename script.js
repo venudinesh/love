@@ -281,61 +281,6 @@ function createEmojiRain() {
     }
 }
 
-// MEMORY WALL
-const memoryWallBtn = document.getElementById('memoryWallBtn');
-const memoryWallModal = document.getElementById('memoryWallModal');
-const closeMemoryWall = document.getElementById('closeMemoryWall');
-const addMemoryBtn = document.getElementById('addMemoryBtn');
-const memoryInput = document.getElementById('memoryInput');
-const memoriesList = document.getElementById('memoriesList');
-
-// Load memories from localStorage
-let memories = JSON.parse(localStorage.getItem('memories')) || [];
-
-function displayMemories() {
-    memoriesList.innerHTML = '';
-    memories.forEach((memory, index) => {
-        const memoryItem = document.createElement('div');
-        memoryItem.classList.add('memory-item');
-        memoryItem.innerHTML = `
-            <span>${memory}</span>
-            <button style="float:right; background:none; border:none; cursor:pointer; color:#ff1493;" onclick="deleteMemory(${index})">✕</button>
-        `;
-        memoriesList.appendChild(memoryItem);
-    });
-}
-
-window.deleteMemory = function(index) {
-    memories.splice(index, 1);
-    localStorage.setItem('memories', JSON.stringify(memories));
-    displayMemories();
-};
-
-memoryWallBtn.addEventListener('click', () => {
-    memoryWallModal.classList.remove('hidden');
-    displayMemories();
-});
-
-closeMemoryWall.addEventListener('click', () => {
-    memoryWallModal.classList.add('hidden');
-});
-
-addMemoryBtn.addEventListener('click', () => {
-    if (memoryInput.value.trim()) {
-        memories.push(memoryInput.value.trim());
-        localStorage.setItem('memories', JSON.stringify(memories));
-        memoryInput.value = '';
-        displayMemories();
-        createEmojiRain();
-    }
-});
-
-memoryInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        addMemoryBtn.click();
-    }
-});
-
 // PHOTO GALLERY
 const photos = [
     'IMG_20250823_150008.jpg',
